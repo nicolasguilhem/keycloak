@@ -67,6 +67,16 @@ public class KeycloakPrincipal<T extends KeycloakSecurityContext> implements Pri
     public String toString() {
         return name;
     }
+    
+    /**
+     * Custom claim from other claims that might be in the token of security context.
+     *
+     * @param claim the name of the claim to get
+     * @return the value of the claim if present {@code null} otherwise
+     */
+    public String getCustomClaim(String claim) {
+        return context.getCustomClaim(claim);
+    }
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         DelegatingSerializationFilter.builder()

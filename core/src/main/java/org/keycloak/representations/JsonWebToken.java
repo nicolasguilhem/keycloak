@@ -304,6 +304,16 @@ public class JsonWebToken implements Serializable, Token {
     public Map<String, Object> getOtherClaims() {
         return otherClaims;
     }
+    
+    /**
+     * Custom claim from other claims that might be in the IDToken.
+     *
+     * @param claim the name of the claim to get
+     * @return the value of the claim if present {@code null} otherwise
+     */
+    public Map<String, Object> getCustomClaim(String claim) {
+        return otherClaims.get(claim);
+    }
 
     @JsonAnySetter
     public void setOtherClaims(String name, Object value) {

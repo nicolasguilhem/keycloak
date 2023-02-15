@@ -79,6 +79,16 @@ public class KeycloakSecurityContext implements Serializable {
         return token.getIssuer().substring(token.getIssuer().lastIndexOf('/') + 1);
     }
 
+    /**
+     * Custom claim from other claims that might be in the token.
+     *
+     * @param claim the name of the claim to get
+     * @return the value of the claim if present {@code null} otherwise
+     */
+    public String getCustomClaim(String claim) {
+        return token.getCustomClaim(claim);
+    }
+
     // SERIALIZATION
 
     private void writeObject(ObjectOutputStream out) throws IOException {
